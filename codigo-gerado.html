@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resíduos Orgânicos e Compostagem | STEAM SESI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--green-dark:#2d6a4f;--green-mid:#40916c;--green-light:#52b788;--green-pale:#74c69d;
+--earth-dark:#8b6914;--earth-light:#d4a373;--beige:#fefae0;
+--white:#ffffff;--text:#1b3a2b;--shadow:0 4px 20px rgba(45,106,79,.15);
+--shadow-hover:0 8px 30px rgba(45,106,79,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:700}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(45,106,79,.97);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 2px 12px rgba(0,0,0,.15);padding:0}
+.nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.5rem}
+.nav-logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;display:flex;align-items:center;gap:.5rem}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:#d8f3dc;text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--green-pale);transition:width .3s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-toggle{display:none;font-size:1.5rem;color:#fff;background:none;border:none;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,var(--green-dark) 0%,var(--green-mid) 50%,var(--green-light) 100%);position:relative;overflow:hidden;padding:6rem 1.5rem 3rem}
+.hero::before{content:'🍃';position:absolute;top:10%;left:5%;font-size:4rem;opacity:.15;animation:float 6s ease-in-out infinite}
+.hero::after{content:'🌿';position:absolute;bottom:10%;right:5%;font-size:5rem;opacity:.15;animation:float 8s ease-in-out infinite reverse}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-20px) rotate(10deg)}}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero h1{font-size:3.2rem;color:#fff;line-height:1.2;margin-bottom:1rem;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+.hero p{font-size:1.3rem;color:#d8f3dc;margin-bottom:2.5rem}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{padding:.9rem 2.2rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:#fff;color:var(--green-dark);box-shadow:var(--shadow)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.btn-secondary{background:transparent;color:#fff;border:2px solid #fff}
+.btn-secondary:hover{background:rgba(255,255,255,.15);transform:translateY(-3px)}
+
+/* SECTIONS */
+section{padding:5rem 1.5rem}
+.section-container{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{font-size:2.5rem;color:var(--green-dark);margin-bottom:.5rem}
+.section-header p{font-size:1.1rem;color:var(--green-mid)}
+.bg-white{background:var(--white)}
+.bg-beige{background:var(--beige)}
+
+/* CARDS GRID */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.card{background:#fff;border-radius:16px;padding:2rem;text-align:center;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;border-top:4px solid var(--green-light)}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover)}
+.card-icon{font-size:3rem;margin-bottom:1rem}
+.card h3{color:var(--green-dark);margin-bottom:.5rem;font-size:1.2rem}
+.card p{color:#555;font-size:.95rem}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+.stat-card{background:#fff;border-radius:16px;padding:2.5rem 2rem;text-align:center;box-shadow:var(--shadow);border-left:5px solid var(--earth-light)}
+.stat-number{font-family:'Poppins',sans-serif;font-size:2.8rem;font-weight:800;color:var(--green-dark);display:block;margin-bottom:.5rem}
+.stat-label{color:#666;font-size:1rem}
+
+/* PILLARS */
+.pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem}
+.pillar{text-align:center;padding:2rem;background:#fff;border-radius:16px;box-shadow:var(--shadow);transition:transform .3s}
+.pillar:hover{transform:scale(1.05)}
+.pillar-icon{font-size:3rem;margin-bottom:1rem}
+.pillar h3{color:var(--green-dark);margin-bottom:.5rem}
+
+/* STEPS */
+.steps-container{max-width:800px;margin:0 auto}
+.step{display:flex;gap:1.5rem;margin-bottom:2rem;align-items:flex-start}
+.step-number{flex-shrink:0;width:50px;height:50px;background:var(--green-dark);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem}
+.step-content{background:#fff;padding:1.5rem;border-radius:12px;box-shadow:var(--shadow);flex:1}
+.step-content h3{color:var(--green-dark);margin-bottom:.5rem}
+
+/* CAN / CANNOT */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:900px;margin:0 auto}
+.compare-col{border-radius:16px;padding:2rem;box-shadow:var(--shadow)}
+.compare-col h3{text-align:center;margin-bottom:1.5rem;font-size:1.4rem}
+.can{background:#d8f3dc;border:2px solid var(--green-light)}
+.cannot{background:#ffe5e5;border:2px solid #e63946}
+.can h3{color:var(--green-dark)}
+.cannot h3{color:#c1121f}
+.compare-col ul{list-style:none}
+.compare-col li{padding:.6rem 0;border-bottom:1px solid rgba(0,0,0,.05);display:flex;align-items:center;gap:.5rem}
+.compare-col li:last-child{border-bottom:none}
+
+/* BENEFITS */
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.benefit-card{background:#fff;border-radius:16px;padding:1.8rem;box-shadow:var(--shadow);display:flex;gap:1rem;align-items:flex-start;transition:transform .3s}
+.benefit-card:hover{transform:translateY(-5px)}
+.benefit-icon{font-size:2.2rem;flex-shrink:0}
+.benefit-card h3{color:var(--green-dark);font-size:1.1rem;margin-bottom:.3rem}
+.benefit-card p{font-size:.9rem;color:#555}
+
+/* STEAM */
+.steam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+.steam-card{background:#fff;border-radius:16px;padding:2rem 1.5rem;text-align:center;box-shadow:var(--shadow);transition:transform .3s;border-bottom:4px solid var(--green-light)}
+.steam-card:hover{transform:translateY(-8px)}
+.steam-letter{font-family:'Poppins',sans-serif;font-size:2.5rem;font-weight:800;color:var(--green-dark);display:block}
+.steam-card h3{margin:.5rem 0;color:var(--green-mid);font-size:1rem}
+.steam-card p{font-size:.85rem;color:#666}
+
+/* FOOTER */
+footer{background:var(--green-dark);color:#d8f3dc;text-align:center;padding:2.5rem 1.5rem}
+footer p{font-size:1.1rem;font-family:'Poppins',sans-serif;font-weight:600}
+
+/* ANIMATION */
+.fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--green-dark);flex-direction:column;padding:1rem;gap:1rem}
+.nav-links.open{display:flex}
+.nav-toggle{display:block}
+.hero h1{font-size:2.2rem}
+.hero p{font-size:1.1rem}
+.section-header h2{font-size:1.8rem}
+.compare-grid{grid-template-columns:1fr}
+.step{flex-direction:column;align-items:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-container">
+<div class="nav-logo">🌱 EcoCompost</div>
+<ul class="nav-links" id="navLinks">
+<li><a href="#residuos">Resíduos</a></li>
+<li><a href="#impacto">Impacto</a></li>
+<li><a href="#processo">Processo</a></li>
+<li><a href="#passo">Passo a Passo</a></li>
+<li><a href="#pode">O Que Pode?</a></li>
+<li><a href="#beneficios">Benefícios</a></li>
+<li><a href="#steam">STEAM</a></li>
+</ul>
+<button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Resíduos Orgânicos e Compostagem</h1>
+<p>Transformando lixo em vida: o ciclo natural que sustenta o planeta</p>
+<div class="hero-buttons">
+<a href="#residuos" class="btn btn-primary">Saiba Mais</a>
+<a href="#steam" class="btn btn-secondary">Ver STEAM</a>
+</div>
+</div>
+</section>
+
+<section id="residuos" class="bg-white">
+<div class="section-container">
+<div class="section-header fade-in">
+<h2>O que são Resíduos Orgânicos?</h2>
+<p>Materiais de origem vegetal ou animal que podem se decompor naturalmente</p>
+</div>
+<div class="cards-grid">
+<div class="card fade-in"><div class="card-icon">🍎</div><h3>Restos de Alimentos</h3><p>Cascas, sementes e sobras de frutas, verduras e legumes.</p></div>
+<div class="card fade-in"><div class="card-icon">☕</div><h3>Borra de Café</h3><p>Filtro usado e borra, ricas em nitrogênio para a compostagem.</p></div>
+<div class="card fade-in"><div class="card-icon">🍂</div><h3>Folhas Secas</h3><p>Folhas, galhos finos e grama seca trazem carbono ao composto.</p></div>
+<div class="card fade-in"><div class="card-icon">📦</div><h3>Papéis e Serragem</h3><p>Papelão sem tinta, guardanapos e serragem de madeira natural.</p></div>
+</div>
+</div>
+</section>
+
+<section id="impacto" class="bg-beige">
+<div class="section-container">
+<div class="section-header fade-in">
+<h2>O Problema do Desperdício</h2>
+<p>Dados que mostram por que precisamos agir agora</p>
+</div>
+<div class="stats-grid">
+<div class="stat-card fade-in"><span class="stat-number">25x</span><p class="stat-label">O metano é até 25x mais potente que o CO₂ como gás estufa</p></div>
+<div class="stat-card fade-in"><span class="stat-number">&lt;2%</span><p class="stat-label">Menos de 2% dos resíduos orgânicos são reciclados no Brasil</p></div>
+<div class="stat-card fade-in"><span class="stat-number">~50%</span><p class="stat-label">Cerca de 50% do lixo doméstico é material orgânico</p></div>
+</div>
+</div>
+</section>
+
+<section id="processo" class="bg-white">
+<div class="section-container">
+<div class="section-header fade-in">
+<h2>O que é Compostagem?</h2>
+<p>Um processo natural de decomposição controlada que transforma resíduos em adubo</p>
+</div>
+<div class="pillars-grid">
+<div class="pillar fade-in"><div class="pillar-icon">💨</div><h3>Ar</h3><p>Aeração necessária para os microrganismos respirarem e atuarem.</p></div>
+<div class="pillar fade-in"><div class="pillar-icon">💧</div><h3>Água</h3><p>Umidade ideal mantém a vida ativa na pilha de composto.</p></div>
+<div class="pillar fade-in"><div class="pillar-icon">🌡️</div><h3>Temperatura</h3><p>O calor indica atividade microbiana saudável e decomposição.</p></div>
+<div class="pillar fade-in"><div class="pillar-icon">🦠</div><h3>Microrganismos</h3><p>Bactérias e fungos fazem o trabalho de transformar a matéria.</p></div>
+</div>
+</div>
+</section>
+
+<section id="passo" class="bg-beige">
+<div class="section-container">
+<div class="section-header fade-in">
+<h2>Como Fazer Compostagem Passo a Passo</h2>
+<p>Guia prático para começar sua própria composteira</p>
+</div>
+<div class="steps-container">
+<div class="step fade-in"><div class="step-number">1</div><div class="step-content"><h3>Escolha o Local</h3><p>Selecione um espaço sombreado, com boa ventilação e protegido de chuvas fortes.</p></div></div>
+<div class="step fade-in"><div class="step-number">2</div><div class="step-content"><h3>Monte a Composteira</h3><p>Use um recipiente com furos de ventilação ou faça uma pilha direto no solo.</p></div></div>
+<div class="step fade-in"><div class="step-number">3</div><div class="step-content"><h3>Adicione Matéria Verde</h3><p>Coloque restos de alimentos úmidos, borra de café e grama fresca (ricos em nitrogênio).</p></div></div>
+<div class="step fade-in"><div class="step-number">4</div><div class="step-content"><h3>Adicione Matéria Marrom</h3><p>Intercale com folhas secas, papelão e serragem (ricos em carbono) na proporção 3:1.</p></div></div>
+<div class="step fade-in"><div class="step-number">5</div><div class="step-content"><h3>Revire Semanalmente</h3><p>Misture a pilha uma vez por semana para garantir aeração e acelerar a decomposição.</p></div></div>
+<div class="step fade-in"><div class="step-number">6</div><div class="step-content"><h3>Colha o Composto</h3><p>Após 2 a 4 meses, o húmus estará escuro, cheiroso e pronto para usar nas plantas.</p></div></div>
+</div>
+</div>
+</section>
+
+<section id="pode" class="bg-white">
+<div class="section-container">
+<div class="section-header fade-in">
+<h2>O Que Pode e Não Pode</h2>
+<p>Guia rápido do que entra e do que não entra na composteira</p>
+</div>
+<div class="compare-grid">
+<div class="compare-col can fade-in">
+<h3>✅ Pode Compostar</h3>
+<ul>
+<li>🍎 Cascas de frutas e legumes</li>
+<li>☕ Borra de café e filtro</li>
+<li>🍂 Folhas secas e galhos finos</li>
+<li>📦 Papelão sem tinta</li>
+<li>🥚 Cascas de ovo trituradas</li>
+<li>🌾 Serragem de madeira natural</li>
+<li>🍵 Saquinhos de chá</li>
+</ul>
+</div>
+<div class="compare-col cannot fade-in">
+<h3>❌ Não Pode Compostar</h3>
+<ul>
+<li>🍖 Carnes e ossos</li>
+<li>🐟 Restos de peixe</li>
+<li>🥛 Laticínios</li>
+<li>🛢️ Óleos e gorduras</li>
+<li>🐶 Fezes de animais</li>
+<li>🖨️ Papéis com tinta colorida</li>
+<li>🚭 Bitucas de cigarro</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="beneficios" class="bg-beige">
+<div class="section-container">
+<div class="section-header fade-in">
+<h2>Benefícios da Compostagem</h2>
+<p>Por que transformar resíduos em adubo faz diferença</p>
+</div>
+<div class="benefits-grid">
+<div class="benefit-card fade-in"><div class="benefit-icon">🌍</div><div><h3>Reduz Emissões</h3><p>Evita que resíduos orgânicos gerem metano em aterros.</p></div></div>
+<div class="benefit-card fade-in"><div class="benefit-icon">🌱</div><div><h3>Adubo Natural</h3><p>Produz húmus rico em nutrientes para plantas e hortas.</p></div></div>
+<div class="benefit-card fade-in"><div class="benefit-icon">📉</div><div><h3>Menos Lixo</h3><p>Diminui o volume de resíduos enviados aos aterros.</p></div></div>
+<div class="benefit-card fade-in"><div class="benefit-icon">💧</div><div><h3>Economia de Água</h3><p>O composto retém umidade, reduzindo a irrigação.</p></div></div>
+<div class="benefit-card fade-in"><div class="benefit-icon">💰</div><div><h3>Economia Financeira</h3><p>Reduz gastos com adubos químicos e coleta de lixo.</p></div></div>
+<div class="benefit-card fade-in"><div class="benefit-icon">📚</div><div><h3>Educação Ambiental</h3><p>Promove consciência ecológica e responsabilidade.</p></div></div>
+</div>
+</div>
+</section>
+
+<section id="steam" class="bg-white">
+<div class="section-container">
+<div class="section-header fade-in">
+<h2>Conexão STEAM</h2>
+<p>Como a compostagem integra Ciência, Tecnologia, Engenharia, Artes e Matemática</p>
+</div>
+<div class="steam-grid">
+<div class="steam-card fade-in"><span class="steam-letter">S</span><h3>Science</h3><p>Estudo de microrganismos, decomposição e biologia do solo.</p></div>
+<div class="steam-card fade-in"><span class="steam-letter">T</span><h3>Technology</h3><p>Sensores de temperatura e umidade para monitorar o composto.</p></div>
+<div class="steam-card fade-in"><span class="steam-letter">E</span><h3>Engineering</h3><p>Design e construção de composteiras eficientes e ventiladas.</p></div>
+<div class="steam-card fade-in"><span class="steam-letter">A</span><h3>Arts</h3><p>Comunicação visual,
