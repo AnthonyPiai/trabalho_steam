@@ -16,7 +16,7 @@ RUN echo 'server {' > /etc/nginx/conf.d/default.conf && \
     echo '}' >> /etc/nginx/conf.d/default.conf
 
 # Copia o index.html para o diretório do Nginx
-COPY index.html /usr/share/nginx/html/index.html
+COPY codigo-gerado.html /usr/share/nginx/html/index.html
 
 # Expõe a porta 80
 EXPOSE 80
